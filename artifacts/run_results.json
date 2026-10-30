@@ -1,0 +1,530 @@
+{
+  "data_profile": {
+    "source": "https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv",
+    "rows": 7043,
+    "columns_after_id_drop": 20,
+    "churn_rate": 0.2653698707936959,
+    "totalcharges_filled_as_zero_for_tenure_0": 11,
+    "totalcharges_still_missing": 0
+  },
+  "split": {
+    "test_size": 0.2,
+    "stratify": true,
+    "random_state": 42,
+    "n_train": 5634,
+    "n_test": 1409,
+    "train_churn_rate": 0.2653532126375577,
+    "test_churn_rate": 0.2654364797728886
+  },
+  "scoring": {
+    "name": "f2",
+    "beta": 2,
+    "reason": "A missed churn costs more than an unneeded retention offer. F2 weights recall more than precision and still penalizes a model that flags every customer."
+  },
+  "baseline": {
+    "hyperparameters": {
+      "n_estimators": 100,
+      "max_depth": null,
+      "min_samples_split": 2,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "class_weight": null,
+      "random_state": 42
+    },
+    "test_metrics": {
+      "f2": 0.5166666666666667,
+      "recall": 0.49732620320855614,
+      "precision": 0.6118421052631579,
+      "f1": 0.5486725663716814,
+      "roc_auc": 0.8225955204216074,
+      "accuracy": 0.7828246983676366
+    }
+  },
+  "random_search": {
+    "kind": "RandomizedSearchCV",
+    "scoring": "f2",
+    "n_splits": 5,
+    "n_candidates": 24,
+    "best_params": {
+      "model__n_estimators": 300,
+      "model__min_samples_split": 10,
+      "model__min_samples_leaf": 2,
+      "model__max_features": "log2",
+      "model__max_depth": 4,
+      "model__class_weight": "balanced"
+    },
+    "best_mean_f2": 0.7205397547089856,
+    "best_std_f2": 0.016928678100455435,
+    "top_candidates": [
+      {
+        "rank_by_mean": 1,
+        "cv_index": 4,
+        "mean_f2": 0.7205397547089856,
+        "std_f2": 0.016928678100455435,
+        "fold_f2": [
+          0.7190132370637786,
+          0.6975345760673481,
+          0.716824644549763,
+          0.7502930832356389,
+          0.7190332326283988
+        ],
+        "fold_range": 0.05275850716829078,
+        "params": {
+          "model__n_estimators": 300,
+          "model__min_samples_split": 10,
+          "model__min_samples_leaf": 2,
+          "model__max_features": "log2",
+          "model__max_depth": 4,
+          "model__class_weight": "balanced"
+        }
+      },
+      {
+        "rank_by_mean": 2,
+        "cv_index": 8,
+        "mean_f2": 0.7190832220787802,
+        "std_f2": 0.01861287430231476,
+        "fold_f2": [
+          0.7303712720632989,
+          0.6880733944954128,
+          0.7177033492822966,
+          0.7441016333938294,
+          0.7151664611590629
+        ],
+        "fold_range": 0.05602823889841657,
+        "params": {
+          "model__n_estimators": 300,
+          "model__min_samples_split": 2,
+          "model__min_samples_leaf": 2,
+          "model__max_features": "log2",
+          "model__max_depth": 8,
+          "model__class_weight": "balanced"
+        }
+      },
+      {
+        "rank_by_mean": 3,
+        "cv_index": 6,
+        "mean_f2": 0.715341578941441,
+        "std_f2": 0.015816344242462838,
+        "fold_f2": [
+          0.7261029411764706,
+          0.6878470080197409,
+          0.7185990338164251,
+          0.7338611449451888,
+          0.7102977667493796
+        ],
+        "fold_range": 0.04601413692544798,
+        "params": {
+          "model__n_estimators": 200,
+          "model__min_samples_split": 5,
+          "model__min_samples_leaf": 8,
+          "model__max_features": "log2",
+          "model__max_depth": 8,
+          "model__class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "rank_by_mean": 4,
+        "cv_index": 22,
+        "mean_f2": 0.7152639218983302,
+        "std_f2": 0.017159931483857617,
+        "fold_f2": [
+          0.7121394230769231,
+          0.6897590361445783,
+          0.7138625592417062,
+          0.7436801881246325,
+          0.7168784029038112
+        ],
+        "fold_range": 0.053921151980054205,
+        "params": {
+          "model__n_estimators": 100,
+          "model__min_samples_split": 5,
+          "model__min_samples_leaf": 2,
+          "model__max_features": "sqrt",
+          "model__max_depth": 4,
+          "model__class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "rank_by_mean": 5,
+        "cv_index": 17,
+        "mean_f2": 0.7144035424476408,
+        "std_f2": 0.020686902325207077,
+        "fold_f2": [
+          0.7317819963257808,
+          0.6785934608266502,
+          0.7091128545564273,
+          0.7373552711761121,
+          0.7151741293532339
+        ],
+        "fold_range": 0.05876181034946193,
+        "params": {
+          "model__n_estimators": 100,
+          "model__min_samples_split": 20,
+          "model__min_samples_leaf": 1,
+          "model__max_features": "log2",
+          "model__max_depth": 8,
+          "model__class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "rank_by_mean": 6,
+        "cv_index": 7,
+        "mean_f2": 0.6987700286757386,
+        "std_f2": 0.024091156940768608,
+        "fold_f2": [
+          0.7111935683364254,
+          0.6539424280350438,
+          0.6976029502151199,
+          0.7248611967921036,
+          0.70625
+        ],
+        "fold_range": 0.07091876875705982,
+        "params": {
+          "model__n_estimators": 200,
+          "model__min_samples_split": 2,
+          "model__min_samples_leaf": 8,
+          "model__max_features": 0.5,
+          "model__max_depth": 8,
+          "model__class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "rank_by_mean": 7,
+        "cv_index": 3,
+        "mean_f2": 0.695568255804735,
+        "std_f2": 0.018842115974676527,
+        "fold_f2": [
+          0.7098574085554866,
+          0.6587202007528231,
+          0.6980319803198032,
+          0.7072266831377394,
+          0.7040050062578223
+        ],
+        "fold_range": 0.05113720780266351,
+        "params": {
+          "model__n_estimators": 100,
+          "model__min_samples_split": 20,
+          "model__min_samples_leaf": 1,
+          "model__max_features": 0.5,
+          "model__max_depth": 12,
+          "model__class_weight": "balanced"
+        }
+      },
+      {
+        "rank_by_mean": 8,
+        "cv_index": 2,
+        "mean_f2": 0.6872554542593459,
+        "std_f2": 0.018954282605152018,
+        "fold_f2": [
+          0.7008760951188986,
+          0.6565656565656566,
+          0.6929770043505282,
+          0.709838107098381,
+          0.6760204081632653
+        ],
+        "fold_range": 0.05327245053272445,
+        "params": {
+          "model__n_estimators": 100,
+          "model__min_samples_split": 20,
+          "model__min_samples_leaf": 1,
+          "model__max_features": "log2",
+          "model__max_depth": null,
+          "model__class_weight": "balanced_subsample"
+        }
+      }
+    ]
+  },
+  "narrowed_grid": {
+    "model__max_features": [
+      "log2"
+    ],
+    "model__class_weight": [
+      "balanced",
+      "balanced_subsample"
+    ],
+    "model__n_estimators": [
+      200,
+      300
+    ],
+    "model__max_depth": [
+      4,
+      8
+    ],
+    "model__min_samples_split": [
+      10
+    ],
+    "model__min_samples_leaf": [
+      1,
+      2,
+      4
+    ]
+  },
+  "grid_search": {
+    "kind": "GridSearchCV",
+    "scoring": "f2",
+    "n_splits": 5,
+    "n_candidates": 24,
+    "best_params": {
+      "model__class_weight": "balanced",
+      "model__max_depth": 8,
+      "model__max_features": "log2",
+      "model__min_samples_leaf": 2,
+      "model__min_samples_split": 10,
+      "model__n_estimators": 300
+    },
+    "best_mean_f2": 0.725596560791027,
+    "best_std_f2": 0.018501337403927624,
+    "top_candidates": [
+      {
+        "rank_by_mean": 1,
+        "cv_index": 9,
+        "mean_f2": 0.725596560791027,
+        "std_f2": 0.018501337403927624,
+        "fold_f2": [
+          0.7369062119366626,
+          0.6968215158924206,
+          0.7219892150988616,
+          0.7522658610271903,
+          0.72
+        ],
+        "fold_range": 0.0554443451347697,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 8,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 2,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 300
+        }
+      },
+      {
+        "rank_by_mean": 2,
+        "cv_index": 8,
+        "mean_f2": 0.7241841404073096,
+        "std_f2": 0.019906442527887862,
+        "fold_f2": [
+          0.7303712720632989,
+          0.6941896024464832,
+          0.7232516437537359,
+          0.7557436517533253,
+          0.7173645320197044
+        ],
+        "fold_range": 0.06155404930684205,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 8,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 2,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 200
+        }
+      },
+      {
+        "rank_by_mean": 3,
+        "cv_index": 7,
+        "mean_f2": 0.7230496249885288,
+        "std_f2": 0.017884901972709193,
+        "fold_f2": [
+          0.7347560975609756,
+          0.6963958460598656,
+          0.7275449101796407,
+          0.7466747279322854,
+          0.7098765432098766
+        ],
+        "fold_range": 0.0502788818724198,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 8,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 1,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 300
+        }
+      },
+      {
+        "rank_by_mean": 4,
+        "cv_index": 6,
+        "mean_f2": 0.7210206534260378,
+        "std_f2": 0.02269511762973279,
+        "fold_f2": [
+          0.730816077953715,
+          0.6801470588235294,
+          0.7266746411483254,
+          0.748792270531401,
+          0.7186732186732187
+        ],
+        "fold_range": 0.06864521170787152,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 8,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 1,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 200
+        }
+      },
+      {
+        "rank_by_mean": 5,
+        "cv_index": 5,
+        "mean_f2": 0.7208829949823514,
+        "std_f2": 0.016933352052700464,
+        "fold_f2": [
+          0.7211538461538461,
+          0.6975345760673481,
+          0.7164002368265245,
+          0.7502930832356389,
+          0.7190332326283988
+        ],
+        "fold_range": 0.05275850716829078,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 4,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 4,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 300
+        }
+      },
+      {
+        "rank_by_mean": 6,
+        "cv_index": 10,
+        "mean_f2": 0.7208459766046897,
+        "std_f2": 0.01878642462317115,
+        "fold_f2": [
+          0.7328891580860085,
+          0.6876528117359413,
+          0.7236842105263158,
+          0.7430806257521059,
+          0.7169230769230769
+        ],
+        "fold_range": 0.05542781401616459,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 8,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 4,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 200
+        }
+      },
+      {
+        "rank_by_mean": 7,
+        "cv_index": 3,
+        "mean_f2": 0.7205397547089856,
+        "std_f2": 0.016928678100455435,
+        "fold_f2": [
+          0.7190132370637786,
+          0.6975345760673481,
+          0.716824644549763,
+          0.7502930832356389,
+          0.7190332326283988
+        ],
+        "fold_range": 0.05275850716829078,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 4,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 2,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 300
+        }
+      },
+      {
+        "rank_by_mean": 8,
+        "cv_index": 0,
+        "mean_f2": 0.7202693065712419,
+        "std_f2": 0.019422728445395537,
+        "fold_f2": [
+          0.7190132370637786,
+          0.6949458483754513,
+          0.7176749703440095,
+          0.754994124559342,
+          0.7147183525136281
+        ],
+        "fold_range": 0.06004827618389075,
+        "params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 4,
+          "model__max_features": "log2",
+          "model__min_samples_leaf": 1,
+          "model__min_samples_split": 10,
+          "model__n_estimators": 200
+        }
+      }
+    ]
+  },
+  "selection": {
+    "near_tie_band_f2": 0.01,
+    "refit_index": 9,
+    "refit_mean_f2": 0.725596560791027,
+    "refit_std_f2": 0.018501337403927624,
+    "refit_params": {
+      "model__class_weight": "balanced",
+      "model__max_depth": 8,
+      "model__max_features": "log2",
+      "model__min_samples_leaf": 2,
+      "model__min_samples_split": 10,
+      "model__n_estimators": 300
+    },
+    "chosen_index": 1,
+    "chosen_mean_f2": 0.7201102873522978,
+    "chosen_std_f2": 0.016924525993630608,
+    "chosen_params": {
+      "model__class_weight": "balanced",
+      "model__max_depth": 4,
+      "model__max_features": "log2",
+      "model__min_samples_leaf": 1,
+      "model__min_samples_split": 10,
+      "model__n_estimators": 300
+    },
+    "use_refit_estimator": false,
+    "reason": "A grid candidate within 0.01 mean F2 of the leader has a lower fold standard deviation. That candidate is the shipped model. It is fit once on the training split. best_estimator_ is not fit again.",
+    "tighter_model_outside_band": null,
+    "extra_train_fit": true
+  },
+  "tuned_test_metrics": {
+    "f2": 0.6992840095465394,
+    "recall": 0.7834224598930482,
+    "precision": 0.48914858096828046,
+    "f1": 0.6022610483042138,
+    "roc_auc": 0.8349156526905888,
+    "accuracy": 0.7253371185237757
+  },
+  "comparison": {
+    "f2": {
+      "baseline": 0.5166666666666667,
+      "tuned": 0.6992840095465394,
+      "tuned_minus_baseline": 0.18261734287987264
+    },
+    "recall": {
+      "baseline": 0.49732620320855614,
+      "tuned": 0.7834224598930482,
+      "tuned_minus_baseline": 0.286096256684492
+    },
+    "precision": {
+      "baseline": 0.6118421052631579,
+      "tuned": 0.48914858096828046,
+      "tuned_minus_baseline": -0.1226935242948774
+    },
+    "f1": {
+      "baseline": 0.5486725663716814,
+      "tuned": 0.6022610483042138,
+      "tuned_minus_baseline": 0.053588481932532406
+    },
+    "roc_auc": {
+      "baseline": 0.8225955204216074,
+      "tuned": 0.8349156526905888,
+      "tuned_minus_baseline": 0.01232013226898132
+    },
+    "accuracy": {
+      "baseline": 0.7828246983676366,
+      "tuned": 0.7253371185237757,
+      "tuned_minus_baseline": -0.05748757984386088
+    }
+  },
+  "test_set_scored_times": 2,
+  "versions": {
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1"
+  }
+}
