@@ -175,6 +175,10 @@ def score_predictions(estimator, x, y) -> dict:
     """One metric bundle. Call this on the test set only at the two allowed times."""
     predicted = estimator.predict(x)
     probability = estimator.predict_proba(x)[:, 1]
+    return metrics_from_predictions(y, predicted, probability)
+
+
+def metrics_from_predictions(y, predicted, probability) -> dict:
     return {
         "f2": float(fbeta_score(y, predicted, beta=2)),
         "recall": float(recall_score(y, predicted)),
